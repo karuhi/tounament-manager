@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="halloween">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DETONATOR OPEN #2 | プロフィール設定</title>
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="rounded-lg shadow drawer min-h-screen">
+      <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+      <div class="flex flex-col drawer-content">
+        <div class="w-full navbar bg-base-300">
+          <div class="flex-none lg:hidden">
+            <label for="my-drawer-3" class="btn btn-square btn-ghost">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                class="inline-block w-6 h-6 stroke-current"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </label>
+          </div>
+          <div class="flex-1 px-2 mx-2">
+            <span>DETONATOR OPEN #2</span>
+          </div>
+          <div class="flex-none hidden lg:block">
+            <ul class="menu horizontal">
+              <li>
+                <a href="/" class="rounded-btn">チーム一覧</a>
+              </li>
+              <li>
+                <a href="/team" class="rounded-btn">チーム作成</a>
+              </li>
+              <li>
+                <a href="/profile" class="rounded-btn">プロフィール設定</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="p-4 xl:pt-8 xl:px-40">
+          <div
+            class="
+              card
+              col-span-1
+              row-span-1
+              shadow-lg
+              xl:col-span-2
+              bg-base-200
+              shadow-2xl
+            "
+          >
+            <div class="card-body py-6">
+              <h2 class="my-4 text-4xl font-bold card-title text-center">
+                DETONATOR OPEN
+              </h2>
+              <h3 id="title" class="my-4 text-3xl card-title text-center">
+                プロフィール設定
+              </h3>
+              <p class="my-4 card-title text-center">
+                あなたの情報を入力してください。
+              </p>
+              <div class="grid grid-cols-1 gap-6 xl:grid-cols-2 mb-20">
+                <div class="flex flex-col">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">プレイヤー名</span>
+                    </label>
+                    <input
+                      id="i_playerName"
+                      type="text"
+                      placeholder="プレイヤー名を入力してください"
+                      class="input input-primary input-bordered"
+                    />
+                    <label class="label hidden">
+                      <span class="label-text-alt text-error"
+                        >プレイヤー名が入力されていません</span
+                      >
+                    </label>
+                  </div>
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">読み仮名</span>
+                    </label>
+                    <input
+                      id="i_playerNameRuby"
+                      type="text"
+                      placeholder="読み仮名を入力してください"
+                      class="input input-primary input-bordered"
+                    />
+                    <label class="label hidden">
+                      <span class="label-text-alt text-error"
+                        >読み仮名が入力されていません</span
+                      >
+                    </label>
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">3v3スタンダードのランク</span>
+                    </label>
+                    <select
+                      id="i_rank"
+                      class="select select-bordered select-primary w-full"
+                    >
+                      <option
+                        value="-1"
+                        disabled="disabled"
+                        selected="selected"
+                      >
+                        ランクを選択
+                      </option>
+                      <option value="1">Supersonic Legend</option>
+                      <option value="2">Grand Champion III</option>
+                      <option value="3">Grand Champion II</option>
+                      <option value="4">Grand Champion I</option>
+                      <option value="5">Champion III</option>
+                      <option value="6">Champion II</option>
+                      <option value="7">Champion I</option>
+                      <option value="8">Diamond III</option>
+                      <option value="9">Diamond II</option>
+                      <option value="10">Diamond I</option>
+                      <option value="11">Platinum III</option>
+                      <option value="12">Platinum II</option>
+                      <option value="13">Platinum I</option>
+                      <option value="14">Gold III</option>
+                      <option value="15">Gold II</option>
+                      <option value="16">Gold I</option>
+                      <option value="17">Silver III</option>
+                      <option value="18">Silver II</option>
+                      <option value="19">Silver I</option>
+                      <option value="20">Bronze III</option>
+                      <option value="21">Bronze II</option>
+                      <option value="22">Bronze I</option>
+                      <option value="23">Unranked</option>
+                    </select>
+                    <label class="label hidden">
+                      <span class="label-text-alt text-error"
+                        >ランクが選択されていません</span
+                      >
+                    </label>
+                  </div>
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">プラットフォーム</span>
+                    </label>
+                    <select
+                      id="i_platform"
+                      class="select select-bordered select-primary w-full"
+                    >
+                      <option
+                        value="-1"
+                        disabled="disabled"
+                        selected="selected"
+                      >
+                        プラットフォームを選択
+                      </option>
+                      <option value="1">PC</option>
+                      <option value="2">PS4</option>
+                      <option value="3">Xbox One</option>
+                      <option value="4">Nintendo Switch</option>
+                    </select>
+                    <label class="label hidden">
+                      <span class="label-text-alt text-error"
+                        >プラットフォームが選択されていません</span
+                      >
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="justify-center space-x-2 card-actions">
+                <button
+                  id="btn_submit"
+                  class="btn btn-primary"
+                  onclick="submitProfile()"
+                >
+                  設定する
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="drawer-side">
+        <label for="my-drawer-3" class="drawer-overlay"></label>
+        <ul class="p-4 overflow-y-auto menu w-80 bg-base-100">
+          <li>
+            <a href="/team">チーム作成</a>
+          </li>
+          <li>
+            <a href="/">チーム一覧</a>
+          </li>
+          <li>
+            <a href="/profile">プロフィール設定</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="./assets/js/validators.js"></script>
+    <script src="./assets/js/profile.js"></script>
+  </body>
+</html>

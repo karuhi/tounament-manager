@@ -1,0 +1,21 @@
+{
+  "name": "discord-enhance",
+  "version": "1.0.0",
+  "description": "Enhance Discord.",
+  "scripts": {
+    "start": "node app.js",
+    "watch": "nodemon app.js"
+  },
+  "author": "karuhi",
+  "dependencies": {
+    "daisyui": "^1.11.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "firebase-admin": "^9.11.0",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "express-session": "^1.17.2",
+    "tailwindcss": "^2.2.7"
+  }
+}

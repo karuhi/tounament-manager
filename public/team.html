@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="halloween">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DETONATOR</title>
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="rounded-lg shadow drawer min-h-screen">
+      <input
+        id="my-drawer-3"
+        type="checkbox"
+        class="drawer-toggle"
+        checked="false"
+      />
+      <div class="flex flex-col drawer-content">
+        <div class="w-full navbar bg-base-300">
+          <div class="flex-none lg:hidden">
+            <label for="my-drawer-3" class="btn btn-square btn-ghost">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                class="inline-block w-6 h-6 stroke-current"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </label>
+          </div>
+          <div class="flex-1 px-2 mx-2">
+            <span>DETONATOR OPEN #2</span>
+          </div>
+          <div class="flex-none hidden lg:block">
+            <ul class="menu horizontal">
+              <li>
+                <a href="/" class="rounded-btn">チーム一覧</a>
+              </li>
+              <li>
+                <a href="/team" class="rounded-btn">チーム作成</a>
+              </li>
+              <li>
+                <a href="/profile" class="rounded-btn">プロフィール設定</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="p-4 xl:pt-8 xl:px-40">
+          <div
+            class="
+              card
+              col-span-1
+              row-span-1
+              shadow-lg
+              xl:col-span-2
+              bg-base-200
+              shadow-2xl
+            "
+          >
+            <div class="card-body py-6">
+              <h2
+                class="my-4 xl:mb-8 text-4xl font-bold card-title text-center"
+              >
+                DETONATOR OPEN
+              </h2>
+              <h3
+                id="title"
+                class="my-4 xl:mb-8 text-3xl card-title text-center"
+              >
+                チーム作成
+              </h3>
+              <p class="my-4 xl:mb-8 text-xl card-title text-center">
+                チームの情報を入力してください。
+              </p>
+              <div class="grid grid-cols-1 gap-6 xl:grid-cols-2 mb-20">
+                <div class="flex flex-col">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">チーム名</span>
+                    </label>
+                    <input
+                      id="i_teamName"
+                      type="text"
+                      placeholder="チーム名を入力してください"
+                      class="input input-primary input-bordered"
+                    />
+                    <label class="label hidden">
+                      <span class="label-text-alt text-error"
+                        >チーム名が入力されていません</span
+                      >
+                    </label>
+                  </div>
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">読み仮名</span>
+                    </label>
+                    <input
+                      id="i_teamNameRuby"
+                      type="text"
+                      placeholder="読み仮名を入力してください"
+                      class="input input-primary input-bordered"
+                    />
+                    <label class="label hidden">
+                      <span class="label-text-alt text-error"
+                        >読み仮名が入力されていません</span
+                      >
+                    </label>
+                  </div>
+                </div>
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">意気込み</span>
+                  </label>
+                  <textarea
+                    id="i_comment"
+                    class="
+                      textarea
+                      h-24
+                      xl:h-full
+                      textarea-bordered textarea-primary
+                    "
+                    placeholder="大会への意気込みを入力してください"
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="justify-center space-x-2 card-actions">
+                <button
+                  class="btn btn-primary"
+                  id="btn_submit"
+                  onclick="submitTeam()"
+                >
+                  作成する
+                </button>
+                <a
+                  href="/members"
+                  class="btn btn-primary hidden"
+                  id="btn_members"
+                >
+                  メンバー登録
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="drawer-side">
+        <label for="my-drawer-3" class="drawer-overlay"></label>
+        <ul class="p-4 overflow-y-auto menu w-80 bg-base-100">
+          <li>
+            <a href="/team">チーム作成</a>
+          </li>
+          <li>
+            <a href="/">チーム一覧</a>
+          </li>
+          <li>
+            <a href="/profile">プロフィール設定</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="./assets/js/validators.js"></script>
+    <script src="./assets/js/team.js"></script>
+  </body>
+</html>
