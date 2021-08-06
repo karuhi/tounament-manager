@@ -11,6 +11,7 @@ const urls = {
   index: "/",
   profile: "/profile",
   team: "/team",
+  members: "/members",
 };
 
 Object.keys(urls).forEach((key) => {
