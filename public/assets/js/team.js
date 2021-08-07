@@ -55,8 +55,7 @@ function submitTeam() {
 
   fetch(url, param)
     .then((res) => {
-      // location.href = "/";
-      console.log(res);
+      location.href = "/";
     })
     .catch((error) => {
       alert(error.message);
