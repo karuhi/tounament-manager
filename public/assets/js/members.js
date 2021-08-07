@@ -104,7 +104,7 @@ function deleteMember(playerId) {
 
 window.onload = async function () {
   await loadMyTeam();
-  if (myTeam.players.length < 3) {
+  if (myTeam.players.length < 4) {
     await loadFreeUsers();
   }
 };
