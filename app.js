@@ -89,22 +89,19 @@ app.get("/api/auth", async (req, res) => {
     if (!isJoined) {
       return res.redirect("/attention");
     } else {
-      const isUserDBAvailable = await db
+      const userData = await db
         .collection("users")
         .doc(discordUser.id)
         .get()
         .then((user) => {
-          let userData = user.data();
-          if (userData == undefined) {
-            return true;
-          } else {
-            return false;
-          }
+          return user.data();
         })
         .catch((err) => {
           return;
         });
-      if (isUserDBAvailable) {
+
+      if (userData == undefined) {
+        // ユーザー新規登録
         db.collection("users")
           .doc(discordUser.id)
           .set({
@@ -119,6 +116,14 @@ app.get("/api/auth", async (req, res) => {
           .catch((err) => {
             return;
           });
+      } else if (
+        userData.platform === "" ||
+        userData.playerName === "" ||
+        userData.playerNameRuby === "" ||
+        userData.rank === ""
+      ) {
+        // プロフィール未設定ユーザー
+        res.redirect("/profile");
       } else {
         res.redirect("/");
       }
