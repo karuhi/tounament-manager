@@ -23,9 +23,9 @@ const pageRouter = require("./routes/page");
 // app
 const auth = require("./app/auth");
 
-// 8080番ポートで待ちうける
-app.listen(8080, () => {
-  console.log("Running at Port 8080...");
+// 3000番ポートで待ちうける
+app.listen(3000, () => {
+  console.log("Running at Port 3000...");
 });
 
 // 静的ファイルのルーティング
