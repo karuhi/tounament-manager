@@ -89,6 +89,7 @@ app.get("/api/auth", async (req, res) => {
     if (!isJoined) {
       return res.redirect("/attention");
     } else {
+      req.session.user = discordUser;
       const userData = await db
         .collection("users")
         .doc(discordUser.id)
@@ -128,7 +129,6 @@ app.get("/api/auth", async (req, res) => {
         res.redirect("/");
       }
     }
-    req.session.user = discordUser;
   } else {
     res.redirect("/");
   }
