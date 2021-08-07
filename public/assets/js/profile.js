@@ -20,7 +20,6 @@ function submitProfile() {
   fetch("/api/profile", param)
     .then((res) => {
       location.href = "/";
-      console.log(res);
     })
     .catch((error) => {
       alert(error.message);

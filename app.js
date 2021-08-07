@@ -23,6 +23,9 @@ const pageRouter = require("./routes/page");
 // app
 const auth = require("./app/auth");
 
+// firebase
+const db = require("./firebase");
+
 // 3000番ポートで待ちうける
 app.listen(3000, () => {
   console.log("Running at Port 3000...");
@@ -48,13 +51,11 @@ app.use(
 );
 
 const sessionCheck = (req, res, next) => {
-  // TODO 開発中はセッション認証を無効
   if (req.session.user) {
     next();
   } else {
     res.redirect("/login");
   }
-  // next();
 };
 
 // ログインページ
@@ -80,17 +81,52 @@ app.get("/api/auth", async (req, res) => {
       code: accessCode,
       scope: process.env.SCOPE,
     };
-    const user = await auth.login(credentialData);
+    const discordUser = await auth.login(credentialData);
 
     // サーバー未参加はログイン不可
-    const isJoined = await auth.isServerJoined(user.id);
+    const isJoined = await auth.isServerJoined(discordUser.id);
+
     if (!isJoined) {
       return res.redirect("/attention");
+    } else {
+      const isUserDBAvailable = await db
+        .collection("users")
+        .doc(discordUser.id)
+        .get()
+        .then((user) => {
+          let userData = user.data();
+          if (userData == undefined) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+        .catch((err) => {
+          return;
+        });
+      if (isUserDBAvailable) {
+        db.collection("users")
+          .doc(discordUser.id)
+          .set({
+            platform: "",
+            playerName: "",
+            playerNameRuby: "",
+            rank: "",
+          })
+          .then((user) => {
+            res.redirect("/profile");
+          })
+          .catch((err) => {
+            return;
+          });
+      } else {
+        res.redirect("/");
+      }
     }
-
-    req.session.user = user;
+    req.session.user = discordUser;
+  } else {
+    res.redirect("/");
   }
-  res.redirect("/");
 });
 
 // API

@@ -61,18 +61,38 @@
             "
           >
             <div class="card-body py-6">
-              <h2
-                class="my-4 xl:mb-8 text-4xl font-bold card-title text-center"
-              >
-                DETONATOR OPEN
-              </h2>
               <h3 class="my-4 xl:mb-8 text-3xl card-title text-center">
                 <span id="teamName"></span> メンバー登録
               </h3>
               <p class="my-4 xl:mb-8 text-xl card-title text-center">
                 チームメンバーを選択してください。
               </p>
-              <div class="grid grid-cols-1 gap-6 xl:grid-cols-2 mb-20"></div>
+              <ul id="members" class="text-center"></ul>
+              <div
+                id="newMember"
+                class="flex justify-center mt-4 xl:mt-8 hidden"
+              >
+                <div class="form-control">
+                  <div class="relative">
+                    <select
+                      id="player"
+                      class="select select-bordered select-primary w-full pr-32"
+                    ></select>
+                    <button
+                      class="
+                        absolute
+                        top-0
+                        right-0
+                        rounded-l-none
+                        btn btn-primary
+                      "
+                      onclick="addMember()"
+                    >
+                      追加
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -92,6 +112,6 @@
         </ul>
       </div>
     </div>
-    <script src="./assets/js/member.js"></script>
+    <script src="./assets/js/members.js"></script>
   </body>
 </html>

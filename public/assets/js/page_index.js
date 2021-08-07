@@ -9,7 +9,6 @@ function loadTeams() {
     .then((response) => response.json())
     .then((data) => {
       data.forEach((team, idx) => {
-        console.log(team);
         targetElement.innerHTML += `
       <tr>
         <td>${team.data.teamName}</td>
@@ -17,14 +16,10 @@ function loadTeams() {
         <td>${
           team.data.players.length == 3
             ? `<button class="btn btn-success btn-disabled btn-xs">エントリー完了</button>`
-            : `<button class="btn btn btn-warning btn-disabled btn-xs">未登録者あり</button>`
+            : `<button class="btn btn btn-warning btn-disabled btn-xs">準備中</button>`
         }
         </td>
       </tr>`;
       });
     });
-}
-
-function joinTeamRequest(teamId) {
-  console.log(`join team ${teamId}`);
 }
