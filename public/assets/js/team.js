@@ -11,7 +11,8 @@ function loadMyTeam() {
   };
   fetch("/api/teams/myteam", param)
     .then((res) => res.json())
-    .then((data) => {
+    .then((obj) => {
+      const data = obj.data;
       if (data) {
         teamId = data.id;
         document.getElementById("title").textContent = "マイチーム編集";

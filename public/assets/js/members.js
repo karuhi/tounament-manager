@@ -6,8 +6,8 @@ async function loadMyTeam() {
       method: "GET",
     };
     const res = await fetch("/api/teams/myteam", param);
-    const data = await res.json();
-    myTeam = data;
+    const obj = await res.json();
+    myTeam = obj.data;
 
     const memberList = document.getElementById("members");
     memberList.innerHTML = "";

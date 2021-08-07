@@ -66,7 +66,7 @@ router.get("/teams/myteam", async (req, res) => {
           users.find((u) => u.id === id)
         );
       }
-      res.status(200).send(team);
+      res.status(200).send({ data: team });
     } catch (err) {
       res.send(err);
     }
