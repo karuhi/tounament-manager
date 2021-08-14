@@ -10,7 +10,7 @@ const path = require("path");
 const fetch = require("node-fetch");
 
 // secrets
-require("dotenv").config();
+require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
 
 // body parser
 app.use(express.json());
@@ -28,6 +28,7 @@ const db = require("./firebase");
 
 // 3000番ポートで待ちうける
 app.listen(3000, () => {
+  console.info("environment : " + process.env.NODE_ENV);
   console.log("Running at Port 3000...");
 });
 
@@ -136,6 +137,20 @@ app.get("/api/auth", async (req, res) => {
 
 // API
 app.use("/api", apiRouter);
+
+// 開発環境からリダイレクト設定を出しわける(ログイン後のredirect先が変わる)
+app.get("/auth/discord", (req, res) => {
+  const baseUrl = "https://discord.com/api/oauth2/authorize?";
+  const loginUrl =
+    baseUrl +
+    new URLSearchParams({
+      client_id: process.env.CLIENT_ID,
+      redirect_uri: process.env.REDIRECT_URI,
+      response_type: "code",
+      scope: "identify",
+    }).toString();
+  res.redirect(302, loginUrl);
+});
 
 // 各ページ
 app.use("/", sessionCheck, pageRouter);

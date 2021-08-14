@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-require("dotenv").config();
+require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
 
 exports.login = async (credential) => {
   const auth = await fetch("https://discord.com/api/oauth2/token", {

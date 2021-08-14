@@ -53,15 +53,17 @@
                 エントリーするには、Discordアカウントでのログインが必要です。
               </p>
 
-              <a
+              <div
                 class="btn btn-secondary btn-lg max-w-sm mx-auto my-5"
-                href="https://discord.com/api/oauth2/authorize?client_id=860666176741048350&redirect_uri=https%3A%2F%2Fapp.supercolliderportal.org%2Fapi%2Fauth%2F&response_type=code&scope=identify%20guilds"
-                >Discordでログインする</a
+                onclick="login2Discord()"
               >
+                Discordでログインする
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <script src="./assets/js/page_login.js"></script>
   </body>
 </html>
