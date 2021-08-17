@@ -108,7 +108,7 @@ app.get("/api/auth", async (req, res) => {
           .doc(discordUser.id)
           .set({
             platform: "",
-            playerName: "",
+            playerName: `${discordUser.username}#${discordUser.discriminator}`,
             playerNameRuby: "",
             rank: "",
           })
@@ -124,7 +124,17 @@ app.get("/api/auth", async (req, res) => {
         userData.playerNameRuby === "" ||
         userData.rank === ""
       ) {
-        // プロフィール未設定ユーザー
+        if (userData.playerName === "") {
+          db.collection("users")
+            .doc(discordUser.id)
+            .update({
+              playerName: `${discordUser.username}#${discordUser.discriminator}`,
+            })
+            .then((user) => {})
+            .catch((err) => {
+              return;
+            });
+        }
         res.redirect("/profile");
       } else {
         res.redirect("/");

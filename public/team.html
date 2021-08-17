@@ -111,6 +111,7 @@
                   </label>
                   <textarea
                     id="i_comment"
+                    maxlength="50"
                     class="
                       textarea
                       h-24
@@ -137,6 +138,16 @@
                 >
                   メンバー登録
                 </a>
+              </div>
+
+              <div class="justify-center space-x-2 card-actions">
+                <button
+                  class="btn btn-error hidden"
+                  id="btn_delete"
+                  onclick="deleteTeam()"
+                >
+                  チームを削除する
+                </button>
               </div>
             </div>
           </div>

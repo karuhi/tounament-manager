@@ -18,6 +18,7 @@ function loadMyTeam() {
         document.getElementById("title").textContent = "マイチーム編集";
         document.getElementById("btn_submit").textContent = "保存する";
         document.getElementById("btn_members").classList.remove("hidden");
+        document.getElementById("btn_delete").classList.remove("hidden");
         teamElements.teamName.value = data.teamName;
         teamElements.teamNameRuby.value = data.teamNameRuby;
         teamElements.comment.value = data.comment;
@@ -33,6 +34,7 @@ function submitTeam() {
     teamElements.teamName,
     teamElements.teamNameRuby,
   ]);
+  teamElements.comment.value = teamElements.comment.value.replace(/\r?\n/g, "");
   if (!isValid) return;
 
   const data = Object.fromEntries(
@@ -44,6 +46,29 @@ function submitTeam() {
     data["id"] = teamId;
     url = "/api/teams/edit";
   }
+
+  const param = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+    },
+    body: JSON.stringify(data),
+  };
+
+  fetch(url, param)
+    .then((res) => {
+      location.href = "/";
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+}
+
+function deleteTeam() {
+  let data = {
+    id: teamId,
+  };
+  let url = "/api/teams/delete";
 
   const param = {
     method: "POST",
