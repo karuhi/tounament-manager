@@ -45,23 +45,24 @@ function submitTeam() {
   if (teamId) {
     data["id"] = teamId;
     url = "/api/teams/edit";
+    const param = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(data),
+    };
+
+    fetch(url, param)
+      .then((res) => {
+        location.href = "/";
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  } else {
+    alert("新規エントリーの受付は終了しました。（2021/08/26 23:59まで）");
   }
-
-  const param = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-    },
-    body: JSON.stringify(data),
-  };
-
-  fetch(url, param)
-    .then((res) => {
-      location.href = "/";
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
 }
 
 function deleteTeam() {
